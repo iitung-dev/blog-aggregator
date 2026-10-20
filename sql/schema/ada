@@ -1,0 +1,18 @@
+                             Table "public.feeds"
+    Column     |            Type             | Collation | Nullable | Default 
+---------------+-----------------------------+-----------+----------+---------
+ id            | uuid                        |           | not null | 
+ created_at    | timestamp without time zone |           | not null | 
+ updated_at    | timestamp without time zone |           | not null | 
+ name          | text                        |           | not null | 
+ url           | text                        |           | not null | 
+ user_id       | uuid                        |           | not null | 
+ last_fetch_at | timestamp without time zone |           |          | 
+Indexes:
+    "feeds_pkey" PRIMARY KEY, btree (id)
+    "feeds_url_key" UNIQUE CONSTRAINT, btree (url)
+Foreign-key constraints:
+    "feeds_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+Referenced by:
+    TABLE "feed_follows" CONSTRAINT "feed_follows_feed_id_fkey" FOREIGN KEY (feed_id) REFERENCES feeds(id) ON DELETE CASCADE
+
