@@ -1,4 +1,4 @@
-module github.com/iitung-dev/re-blog-aggregator
+module github.com/iitung-dev/gator
 
 go 1.26.4
 
