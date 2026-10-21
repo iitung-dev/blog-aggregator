@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/iitung-dev/re-blog-aggregator/internal/config"
-	"github.com/iitung-dev/re-blog-aggregator/internal/database"
+	"github.com/iitung-dev/gator/internal/config"
+	"github.com/iitung-dev/gator/internal/database"
 	_ "github.com/lib/pq"
 )
 
