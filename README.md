@@ -62,3 +62,91 @@ The `go install` command compiles the Go package in your current directory and p
     gator register alice
     gator addfeed "Tech News" "https://example.com/rss"
     ```
+
+## Configuration
+
+1. Set Up the Config File
+
+    Gator reads its settings from a JSON config file located at ~/.gatorconfig.json in your home directory.
+
+    Add this structure, adjusting the database URL to match your local PostgreSQL setup:
+
+    ```
+    {
+    	"db_url": "postgres://postgres:postgres@localhost:5432/gator?sslmode=disable",
+    	"current_user_name": ""
+    }
+    ```
+
+    `db_url`: the connection string Gator uses to talk to your PostgreSQL database.
+    `current_user_name`: gets populated automatically once you register or log in as a user — you can leave it blank initially.
+
+2. Set Up the Database Schema
+
+    Gator relies on PostgreSQL tables defined via SQL migration files (found in `sql/schema/`). You'll use **Goose** to apply them.
+    1. Make sure PostgreSQL is running and you've created a database (e.g., named `gator`):
+
+    ```
+    createdb gator
+    ```
+
+    2. Navigate to your schema folder:
+
+    ```
+    cd sql/schema
+    ```
+
+    3. Run the migrations "up" to create the necessary tables:
+
+    ```
+    goose postgres "postgres://postgres:postgres@localhost:5432/gator?sslmode=disable" up
+    ```
+
+    This applies each versioned migration file in order, creating tables like `users` and `feeds`.
+
+3. Run the Program / Use guide
+
+    If you have not install or build the program, please do so by referring to the [Installation](#installation) Here are some commands that you can try:
+    1. Register a new user:
+
+    ```
+    gator register alice
+    ```
+
+    Creates a new user and automatically sets them as your `current_user_name` in you .gatorconfig.json 2. Add a new RSS feed:
+
+    ```
+    gator addfeed "Hacker News" "https://hnrss.org/newest"
+    ```
+
+    Saves the feed to the database, linked to whichever user is currently logged in. 3. List all feeds:
+
+    ```
+    gator feeds
+    ```
+
+    Displays every feed stored in the database, including the feed's name, URL, and the user who added it. 4. Follows a feed:
+
+    ```
+    gator follow https://www.wagslane.dev/index.xml
+    ```
+
+    User can follow an existing feed by providing it's URL. You may check exisiting feeds with `feeds` command. 5. Unfollow
+
+    ```
+    gator unfollow
+    ```
+
+    User can unfollow a feed that they followed. 6. Aggregate
+
+    ```
+    gator agg <time_between_requests>
+    ```
+
+    Aggregate allows continuous fetch on RSS feeds on a set interval (for example, 1m for every minute, or 30s for every 30 seconds), parses the XML, and stores new posts in the database. It runs indefinitely until you stop it manually (Ctrl+C). 7. Reset the database:
+
+    ```
+    gator reset
+    ```
+
+    Clears existing users and feeds — handy for starting fresh during testing.
