@@ -127,28 +127,27 @@ The `go install` command compiles the Go package in your current directory and p
     gator feeds
     ```
 
-    Displays every feed stored in the database, including the feed's name, URL, and the user who added it. 4. **Follows a feed:**
+    Displays every feed stored in the database, including the feed's name, URL, and the user who added it.  
+    4. **Follows a feed:**
 
     ```
     gator follow https://www.wagslane.dev/index.xml
     ```
 
-    User can follow an existing feed by providing it's URL. You may check exisiting feeds with `feeds` command.
+    User can follow an existing feed by providing it's URL. You may check exisiting feeds with `feeds` command.  
     5. **Unfollow**
 
     ```
     gator unfollow
     ```
 
-    User can unfollow a feed that they followed.
-    6. **Aggregate**
+    User can unfollow a feed that they followed. 6. **Aggregate**
 
     ```
     gator agg <time_between_requests>
     ```
 
-    Aggregate allows continuous fetch on RSS feeds on a set interval (for example, 1m for every minute, or 30s for every 30 seconds), parses the XML, and stores new posts in the database. It runs indefinitely until you stop it manually (Ctrl+C).
-    7. **Reset the database:**
+    Aggregate allows continuous fetch on RSS feeds on a set interval (for example, 1m for every minute, or 30s for every 30 seconds), parses the XML, and stores new posts in the database. It runs indefinitely until you stop it manually (Ctrl+C). 7. **Reset the database:**
 
     ```
     gator reset
