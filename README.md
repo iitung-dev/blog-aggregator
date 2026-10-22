@@ -65,7 +65,7 @@ The `go install` command compiles the Go package in your current directory and p
 
 ## Configuration
 
-1. Set Up the Config File
+1. **Set Up the Config File**
 
     Gator reads its settings from a JSON config file located at ~/.gatorconfig.json in your home directory.
 
@@ -81,7 +81,7 @@ The `go install` command compiles the Go package in your current directory and p
     `db_url`: the connection string Gator uses to talk to your PostgreSQL database.
     `current_user_name`: gets populated automatically once you register or log in as a user — you can leave it blank initially.
 
-2. Set Up the Database Schema
+2. **Set Up the Database Schema**
 
     Gator relies on PostgreSQL tables defined via SQL migration files (found in `sql/schema/`). You'll use **Goose** to apply them.
     1. Make sure PostgreSQL is running and you've created a database (e.g., named `gator`):
