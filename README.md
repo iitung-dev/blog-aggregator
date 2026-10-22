@@ -107,49 +107,48 @@ The `go install` command compiles the Go package in your current directory and p
 3. Run the Program / Use guide
 
     If you have not install or build the program, please do so by referring to the [Installation](#installation) Here are some commands that you can try:
-    1. Register a new user:
+    1. **Register a new user:**
 
     ```
     gator register alice
     ```
 
-    Creates a new user and automatically sets them as your `current_user_name` in you .gatorconfig.json
-    2. Add a new RSS feed:
+    Creates a new user and automatically sets them as your `current_user_name` in you .gatorconfig.json  
+    2. **Add a new RSS feed:**
 
     ```
     gator addfeed "Hacker News" "https://hnrss.org/newest"
     ```
 
-    Saves the feed to the database, linked to whichever user is currently logged in.
-    3. List all feeds:
+    Saves the feed to the database, linked to whichever user is currently logged in.  
+    3. **List all feeds:**
 
     ```
     gator feeds
     ```
 
-    Displays every feed stored in the database, including the feed's name, URL, and the user who added it.
-    4. Follows a feed:
+    Displays every feed stored in the database, including the feed's name, URL, and the user who added it. 4. **Follows a feed:**
 
     ```
     gator follow https://www.wagslane.dev/index.xml
     ```
 
     User can follow an existing feed by providing it's URL. You may check exisiting feeds with `feeds` command.
-    5. Unfollow
+    5. **Unfollow**
 
     ```
     gator unfollow
     ```
 
     User can unfollow a feed that they followed.
-    6. Aggregate
+    6. **Aggregate**
 
     ```
     gator agg <time_between_requests>
     ```
 
     Aggregate allows continuous fetch on RSS feeds on a set interval (for example, 1m for every minute, or 30s for every 30 seconds), parses the XML, and stores new posts in the database. It runs indefinitely until you stop it manually (Ctrl+C).
-    7. Reset the database:
+    7. **Reset the database:**
 
     ```
     gator reset
