@@ -104,55 +104,62 @@ The `go install` command compiles the Go package in your current directory and p
 
     This applies each versioned migration file in order, creating tables like `users` and `feeds`.
 
-3. Run the Program / Use guide
+### 3. Run the Program / Use guide
 
-    If you have not install or build the program, please do so by referring to the [Installation](#installation) Here are some commands that you can try:
-    1. **Register a new user:**
+If you have not installed or built the program, please do so by referring to [Installation](#installation). Here are some commands that you can try:
 
-    ```
+1. **Register a new user:**
+
+    ```bash
     gator register alice
     ```
 
-    Creates a new user and automatically sets them as your `current_user_name` in you .gatorconfig.json
-    2. **Add a new RSS feed:**
+    Creates a new user and automatically sets them as your `current_user_name` in your `.gatorconfig.json`.
 
-    ```
-    gator addfeed "Hacker News" "https://hnrss.org/newest"
+2. **Add a new RSS feed:**
+
+    ```bash
+    gator addfeed "Hacker News" "[https://hnrss.org/newest](https://hnrss.org/newest)"
     ```
 
     Saves the feed to the database, linked to whichever user is currently logged in.
-    3. **List all feeds:**
 
-    ```
+3. **List all feeds:**
+
+    ```bash
     gator feeds
     ```
 
     Displays every feed stored in the database, including the feed's name, URL, and the user who added it.
-    4. **Follows a feed:**
 
-    ```
-    gator follow https://www.wagslane.dev/index.xml
+4. **Follow a feed:**
+
+    ```bash
+    gator follow [https://www.wagslane.dev/index.xml](https://www.wagslane.dev/index.xml)
     ```
 
-    User can follow an existing feed by providing it's URL. You may check exisiting feeds with `feeds` command.
-    5. **Unfollow**
+    Allows a user to follow an existing feed by providing its URL. You may check existing feeds with the `feeds` command.
 
-    ```
+5. **Unfollow a feed:**
+
+    ```bash
     gator unfollow
     ```
 
-    User can unfollow a feed that they followed.
-    6. **Aggregate**
+    Allows a user to unfollow a feed that they followed.
 
-    ```
+6. **Aggregate feeds:**
+
+    ```bash
     gator agg <time_between_requests>
     ```
 
-    Aggregate allows continuous fetch on RSS feeds on a set interval (for example, 1m for every minute, or 30s for every 30 seconds), parses the XML, and stores new posts in the database. It runs indefinitely until you stop it manually (Ctrl+C).
-    7. **Reset the database:**
+    Allows continuous fetching of RSS feeds on a set interval (for example, `1m` for every minute, or `30s` for every 30 seconds), parses the XML, and stores new posts in the database. Runs indefinitely until you stop it manually (`Ctrl+C`).
 
-    ```
+7. **Reset the database:**
+
+    ```bash
     gator reset
     ```
 
-    Clears existing users and feeds — handy for starting fresh during testing.
+    Clears existing users and feeds—handy for starting fresh during testing.
