@@ -104,7 +104,7 @@ The `go install` command compiles the Go package in your current directory and p
 
     This applies each versioned migration file in order, creating tables like `users` and `feeds`.
 
-### 3. Run the Program / Use guide
+## Run the Program / Use guide
 
 If you have not installed or built the program, please do so by referring to [Installation](#installation). Here are some commands that you can try:
 
